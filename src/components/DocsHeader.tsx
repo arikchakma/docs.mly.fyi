@@ -2,12 +2,12 @@ import { useState } from 'react';
 import type { CollectionEntry } from 'astro:content';
 
 type DocsHeaderProps = {
-  groupedGuides: Record<string, CollectionEntry<'guides'>[]>;
-  activeGuideTitle: string;
+  guides: CollectionEntry<'guides'>[];
+  activeGuideSlug: string;
 };
 
 export function DocsHeader(props: DocsHeaderProps) {
-  const { groupedGuides, activeGuideTitle } = props;
+  const { guides, activeGuideSlug } = props;
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -36,26 +36,19 @@ export function DocsHeader(props: DocsHeaderProps) {
         </div>
       </div>
       <div
-        className={`flex flex-col gap-5 border-b bg-gray-50 px-6 py-6 ${isActive ? 'block' : 'hidden'}`}
+        className={`flex flex-col border-b bg-gray-50 px-6 py-6 ${isActive ? 'block' : 'hidden'}`}
       >
-        {Object.entries(groupedGuides).map(([category, guides]) => (
-          <div key={category} className="flex flex-col gap-2">
-            <div className="text-sm font-bold uppercase text-gray-900">
-              {category}
-            </div>
-            <div className="flex flex-col">
-              {guides.map((guide) => (
-                <a
-                  key={guide.slug}
-                  href={`/docs/${guide.slug}`}
-                  className={`${activeGuideTitle === guide.data.title ? 'text-black' : 'text-gray-400'} py-1 hover:text-gray-900`}
-                >
-                  {guide.data.title}
-                </a>
-              ))}
-            </div>
-          </div>
-        ))}
+        {guides.map((guide) => {
+          return (
+            <a
+              key={guide.slug}
+              href={`/docs/${guide.slug}`}
+              className={`${activeGuideSlug === guide.slug ? 'text-black' : 'text-gray-400'} py-1 hover:text-gray-900`}
+            >
+              {guide.data.title}
+            </a>
+          );
+        })}
       </div>
     </>
   );

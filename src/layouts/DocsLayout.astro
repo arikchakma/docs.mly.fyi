@@ -1,8 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { DocsHeader } from '../components/DocsHeader';
-import Container from '../components/Container.astro';
-import { getFormattedStars } from '../lib/github';
 import Sidebar from '../components/Sidebar.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getAllGuides } from '../lib/guide';
@@ -13,22 +11,19 @@ export interface Props {
   guide: GuideType;
 }
 
-const groupedGuides = await getAllGuides();
+const allGuides = await getAllGuides();
 
 const { guide } = Astro.props;
-const { groupTitle, sort, title } = guide.data;
+const { title } = guide.data;
+const { slug } = guide;
 ---
 
 <BaseLayout title={`${title} - mly.fyi`} permalink={`/docs/${guide.slug}`}>
   <div class='block md:hidden'>
-    <DocsHeader
-      activeGuideTitle={title}
-      groupedGuides={groupedGuides}
-      client:load
-    />
+    <DocsHeader activeGuideSlug={slug} guides={allGuides} client:load />
   </div>
   <div class='flex'>
-    <Sidebar activeGuideTitle={title} groupedGuides={groupedGuides} />
+    <Sidebar activeGuideSlug={slug} guides={allGuides} />
     <div
       class="md:proxe-xl prose prose-base mb-24 min-w-0 max-w-[800px] px-6 py-6 prose-p:before:content-[''] prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-gray-500 md:px-14 md:py-12"
     >
