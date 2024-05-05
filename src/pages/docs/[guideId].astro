@@ -6,6 +6,7 @@ export interface Props {
   guide: CollectionEntry<'guides'>;
 }
 
+export const prerender = true;
 export async function getStaticPaths() {
   const guides = await getCollection('guides');
 
