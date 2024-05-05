@@ -1,0 +1,61 @@
+---
+import Container from './Container.astro';
+import { Star, ArrowUpRight } from 'lucide-react';
+---
+
+<div
+  class='border-t-8 border-t-black bg-white py-10 text-black md:py-12 lg:py-24'
+>
+  <Container>
+    <h2 class='mb-6 text-4xl font-bold sm:text-6xl'>
+      <span class='text-orange-400 line-through'> &nbsp;So Many&nbsp; </span>{
+        ' '
+      }
+      Not Many Stars
+    </h2>
+    <p class='mb-4 text-xl leading-relaxed sm:text-3xl sm:leading-relaxed'>
+      I just launched the project —— thus, not many stars.
+    </p>
+    <p class='mb-7 text-xl leading-relaxed sm:text-3xl sm:leading-relaxed'>
+      Please do{' '}
+      <a
+        class='underline underline-offset-8 hover:text-orange-500'
+        href='https://github.com/arikchakma/maily.to'
+        rel='noopener noreferrer'
+        target='_blank'
+      >
+        leave a star on GitHub
+      </a>{' '}
+      if you like the project. Also, I would love to hear from you if you have any
+      feedback or suggestions.
+    </p>
+
+    <div class='flex flex-col gap-3 md:flex-row'>
+      <a
+        class='inline-flex min-h-[56px] items-center justify-center rounded-lg border-black bg-orange-400 px-5 py-2 text-lg font-medium transition-colors hover:bg-orange-500 md:text-xl lg:rounded-xl lg:py-4 lg:text-2xl'
+        href='https://github.com/arikchakma/mly.fyi'
+        rel='noopener noreferrer'
+        target='_blank'
+      >
+        <span class='mr-3 inline-flex items-center'>
+          <Star aria-label='Star Icon' className='mr-1 h-5 w-5 md:h-7 md:w-7' />
+          <span class='line-through'>&nbsp;100k&nbsp;</span>
+        </span>
+        GitHub Stars
+      </a>
+
+      <a
+        class='flex items-center justify-center gap-2 rounded-lg border-4 border-black bg-white px-5 py-2 text-lg font-medium text-black transition-colors hover:bg-black hover:text-white md:text-xl lg:rounded-xl lg:py-3 lg:text-2xl'
+        href='https://demo.mly.fyi'
+        rel='noopener noreferrer'
+        target='_blank'
+      >
+        <ArrowUpRight
+          aria-label='External Icon'
+          className='h-5 w-5 md:h-7 md:w-7'
+        />
+        Try Live Demo
+      </a>
+    </div>
+  </Container>
+</div>

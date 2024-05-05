@@ -1,0 +1,30 @@
+---
+title: 'Local Development'
+groupTitle: 'Introduction'
+sort: 2
+---
+
+You can start the local development server by following the steps below, but before that, make sure you have the following installed on your machine:
+
+- [Node.js](https://nodejs.org/en/download/)
+- [pnpm](https://pnpm.io/installation)
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Redis](https://redis.io/download) - You can also use the Redis Docker image.
+
+## AWS Credentials
+
+You need to have an AWS account and create an IAM user with the following permissions:
+
+- `AmazonSESFullAccess` - To be able to send emails using Amazon SES.
+- `AmazonS3FullAccess` - To store the database backups in an S3 bucket. We will be using [Litestream](https://litestream.io/install/) for backups, and restoring the database from the backups _(mainly for production)_.
+
+Now we can start the local server by following the steps below:
+
+1. Clone the repository `git clone https://github.com/arikchakma/mly.fyi.git` and `cd mly.fyi`.
+2. Copy the environment variables `cp .env.example .env`.
+3. Replace the values of the environment variables in the `.env` file with your own values.
+4. Install the dependencies `pnpm install`.
+5. Run the Database Migration, and start the server `pnpm run db:migrate && pnpm run dev`.
+
+The server will be running at [http://localhost:3000](http://localhost:3000). Start exploring the app!

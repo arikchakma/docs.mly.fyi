@@ -1,0 +1,50 @@
+---
+import Analytics from '../components/Analytics/Analytics.astro';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  permalink?: string;
+}
+
+export interface BaseLayoutProps extends Props {}
+
+const {
+  title = 'mly.fyi - Monitor your emails, your way.',
+  description = 'Monitor your emails, your way. Gain insights on delivery status and engagement metrics with ease.',
+  permalink = '',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+
+    <title>{title}</title>
+    <meta name='robots' content='index,follow' />
+    <meta name='description' itemprop='description' content={description} />
+
+    <meta content='Arik Chakma' name='author' />
+    <meta content='summary_large_image' name='twitter:card' />
+    <meta content='@imarikchakma' name='twitter:creator' />
+    <meta content='1200' property='og:image:width' />
+    <meta content='630' property='og:image:height' />
+    <meta content='https://mly.fyi/og-img.png' property='og:image' />
+    <meta content='mly.fyi' property='og:image:alt' />
+    <meta content='mly.fyi' property='og:site_name' />
+    <meta content='mly.fyi' property='og:title' />
+    <meta content={description} property='og:description' />
+    <meta content='website' property='og:type' />
+    <meta content='https://mly.fyi/' property='og:url' />
+
+    <link href={`https://mly.fyi${permalink}`} rel='canonical' />
+
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+  </head>
+  <body>
+    <slot />
+    <Analytics />
+  </body>
+</html>

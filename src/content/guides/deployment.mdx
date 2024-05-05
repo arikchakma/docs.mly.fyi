@@ -1,0 +1,26 @@
+---
+title: 'Deployment'
+groupTitle: 'Deployment'
+sort: 4
+---
+
+The best part is that you can deploy the app anywhere you want if it supports _Docker_. You can deploy it to a VPS, cloud provider, or even your local machine. The app is designed to be deployed anywhere with minimal configuration.
+
+Here are some popular cloud providers guide to deploy the app:
+
+- [Railway](/docs/deploy-railway)
+
+If you want to deploy the app to your local machine, you can follow the steps below:
+
+```bash
+cp .env .env.production
+docker-compose up --build -d
+```
+
+> You have to update following environment variables in the `.env.production` file:
+
+```bash
+PUBLIC_APP_URL=http://localhost:4321
+# Database Configuration
+DATABASE_URL=/data/db.sqlite3
+```

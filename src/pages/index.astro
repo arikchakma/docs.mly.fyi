@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/Container.astro';
+import HeroSection from '../components/HeroSection.astro';
+import { Examples } from '../components/Examples';
+import UsecaseList from '../components/UsecaseList.astro';
+import OpenSourceLove from '../components/OpenSourceLove.astro';
+---
+
+<BaseLayout>
+  <HeroSection />
+
+  <div class='bg-white py-10 text-black md:py-12 lg:py-24'>
+    <Container>
+      <Examples client:load />
+      <UsecaseList />
+    </Container>
+  </div>
+
+  <OpenSourceLove />
+
+  <div class='bg-black py-8 text-white'>
+    <Container>
+      <p class='text-center text-lg text-white'>
+        MIT Licensed &copy; 2024
+        <span class='hidden sm:inline'>
+          <span class='mx-3'>&middot;</span>
+          <a href='/docs/installation' class=''>Docs</a>
+          <a
+            href='https://github.com/arikchakma/mly.fyi'
+            target='_blank'
+            class='ml-5'
+          >
+            GitHub
+            <img
+              src='/arrow.svg'
+              class='ml-2 inline-block h-3'
+              alt='External Link'
+            />
+          </a>
+          <a
+            href='https://twitter.com/imarikchakma'
+            target='_blank'
+            class='ml-5'
+          >
+            Twitter
+            <img
+              src='/arrow.svg'
+              class='ml-2 inline-block h-3'
+              alt='External Link'
+            />
+          </a>
+        </span>
+      </p>
+    </Container>
+  </div>
+</BaseLayout>

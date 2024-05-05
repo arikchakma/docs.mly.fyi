@@ -1,0 +1,47 @@
+---
+title: 'Start Sending Emails'
+groupTitle: 'Introduction'
+sort: 3
+---
+
+Before you start sending emails, you need to finish [Local Development](/guides/local-development) or [Production Deployment](/guides/deployment) first, a verified identity, and a API key created from the **_local/production_** environment.
+
+```bash
+curl -X POST \
+  http://localhost:3000/api/v1/email/send \
+  -H 'Content-Type: application/json' \
+  -H 'X-Mly-Api-Key: YOUR_API_KEY' \
+  -d '{
+    "from": "John Doe <john@example.com>",
+    "to": "hello@example.com",
+    "subject": "Hello",
+    "text": "Hello, World!",
+    "html": "<h1>Hello, World!</h1>"
+  }'
+```
+
+> There is a catch, for now you can include only `http` URLs in the `html` field. If you include `https` URLs and turn on the `click tracking` feature, you might get a warning from the [browser](https://github.com/arikchakma/mly.fyi/issues/26). I know it's not ideal (and the solution too), but I will add a feature to support `https` URLs soon.
+
+Replace `YOUR_API_KEY`, and `http://localhost:3000` with the API key, and the URL of the app you created from the **_local/production_** environment. You can use any language to send an HTTP request to the API endpoint.
+
+Here is an example using `Node.js`:
+
+```javascript
+const response = await fetch('http://localhost:3000/api/v1/email/send', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-Mly-Api-Key': 'YOUR_API_KEY',
+  },
+  body: JSON.stringify({
+    from: 'John Doe <john@example.com>',
+    to: 'hello@example.com',
+    subject: 'Hello',
+    text: 'Hello, World!',
+    html: '<h1>Hello, World!</h1>',
+  }),
+});
+
+const data = await response.json();
+console.log(data);
+```

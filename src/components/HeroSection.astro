@@ -1,0 +1,39 @@
+---
+import Container from './Container.astro';
+---
+
+<div class='border-y-8 border-black bg-orange-300'>
+  <Container>
+    <div class='flex items-center justify-start gap-4 py-10 md:py-14 lg:py-20'>
+      <div class='flex-grow'>
+        <h1
+          class='mb-2 text-7xl font-bold md:mb-3 md:text-8xl lg:mb-4 lg:text-9xl'
+        >
+          mly.fyi
+        </h1>
+        <p class='text-md md:text-2xl lg:text-3xl'>
+          Effortless email monitoring and insights.
+        </p>
+        <div
+          class='mt-4 flex flex-col items-stretch gap-2 sm:flex-row md:mt-8 lg:mt-10'
+        >
+          <a
+            href='https://demo.mly.fyi'
+            class='flex h-[52px] items-center justify-center rounded-xl bg-black px-6 py-2 text-lg font-medium text-white hover:bg-gray-800 focus:bg-gray-800 focus:outline-0 md:h-auto md:py-3 md:text-xl'
+          >
+            Try Live Demo
+          </a>
+          <a
+            href='/docs/installation'
+            class='rounded-xl border-4 border-black bg-white px-6 py-2 text-center text-lg font-medium text-black hover:bg-gray-200 focus:bg-gray-200 focus:outline-0 md:py-3 md:text-xl'
+          >
+            Get Started
+          </a>
+        </div>
+      </div>
+      <div class='hidden flex-shrink-0 sm:flex'>
+        <img src='/brand/icon.svg' alt='Hero Image' class='sm:h-48 md:h-60' />
+      </div>
+    </div>
+  </Container>
+</div>
