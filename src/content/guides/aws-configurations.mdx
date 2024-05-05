@@ -5,8 +5,8 @@ sort: 2
 
 In order to send emails using Amazon SES, you need to configure the AWS credentials in the `.env` file. Here are the steps to get the AWS credentials:
 
-1. [Create an AWS account](https://dub.sh/mly-signup-aws) if you don't have one.
-2. [Create an IAM user](https://dub.sh/mly-iam-user) with the following permissions:
+1. [Create an AWS account](https://go.mly.fyi/mly-signup-aws) if you don't have one.
+2. [Create an IAM user](https://go.mly.fyi/mly-iam-user) with the following permissions:
    - `AmazonSESFullAccess` - To be able to send emails using Amazon SES.
    - `AmazonSNSFullAccess` - To be able to send bounce and complaint notifications to an SNS topic.
    - `AmazonS3FullAccess` - To store the database backups in an S3 bucket. We will be using [Litestream](https://litestream.io/install/) for backups, and restoring the database from the backups _(mainly for production)_.
