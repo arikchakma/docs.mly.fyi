@@ -5,6 +5,8 @@ export interface Props {
   title?: string;
   description?: string;
   permalink?: string;
+  noIndex?: boolean;
+  redirectUrl?: string;
 }
 
 export interface BaseLayoutProps extends Props {}
@@ -13,6 +15,8 @@ const {
   title = 'mly.fyi - Monitor your emails, your way.',
   description = 'Monitor your emails, your way. Gain insights on delivery status and engagement metrics with ease.',
   permalink = '',
+  noIndex = false,
+  redirectUrl = '',
 } = Astro.props;
 ---
 
@@ -22,7 +26,19 @@ const {
     <meta charset='UTF-8' />
 
     <title>{title}</title>
-    <meta name='robots' content='index,follow' />
+    {
+      redirectUrl && (
+        <meta http-equiv='refresh' content={`1;url=${redirectUrl}`} />
+      )
+    }
+    {
+      noIndex ? (
+        <meta name='robots' content='noindex' />
+      ) : (
+        <meta name='robots' content='index,follow' />
+      )
+    }
+    
     <meta name='description' itemprop='description' content={description} />
 
     <meta content='Arik Chakma' name='author' />

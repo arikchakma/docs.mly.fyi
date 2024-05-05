@@ -7,7 +7,12 @@ const fullUrl = '/docs/introduction';
 return Astro.redirect(fullUrl);
 ---
 
-<BaseLayout>
+<BaseLayout
+  title='Redirecting ..'
+  description='Redirecting to the new location'
+  redirectUrl={fullUrl}
+  noIndex={true}
+>
   <div class='p-8'>
     <h2 class='text-xl font-bold'>Redirecting ..</h2>
     <p>Click the link below if you are not redirected automatically.</p>

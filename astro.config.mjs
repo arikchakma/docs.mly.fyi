@@ -7,9 +7,6 @@ import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
-  build: {
-    format: 'file',
-  },
   markdown: {
     shikiConfig: {
       theme: 'vesper',
