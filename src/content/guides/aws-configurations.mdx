@@ -1,0 +1,38 @@
+---
+title: 'AWS Configurations'
+sort: 2
+---
+
+In order to send emails using Amazon SES, you need to configure the AWS credentials in the `.env` file. Here are the steps to get the AWS credentials:
+
+1. [Create an AWS account](https://dub.sh/mly-signup-aws) if you don't have one.
+2. [Create an IAM user](https://dub.sh/mly-iam-user) with the following permissions:
+   - `AmazonSESFullAccess` - To be able to send emails using Amazon SES.
+   - `AmazonSNSFullAccess` - To be able to send bounce and complaint notifications to an SNS topic.
+   - `AmazonS3FullAccess` - To store the database backups in an S3 bucket. We will be using [Litestream](https://litestream.io/install/) for backups, and restoring the database from the backups _(mainly for production)_.
+3. After creating the IAM user, open the user and go to the `Security credentials` tab. Now `Create access key` and download the `Access key ID` and `Secret access key`.
+4. Update the `.env` file with the following environment variables:
+
+```bash
+# Amazon Simple Email Service (SES) Configuration
+AWS_SES_ACCESS_KEY_ID=
+AWS_SES_SECRET_ACCESS_KEY=
+AWS_SES_REGION=
+AWS_SES_FROM_EMAIL=
+```
+
+> The `AWS_SES_REGION` is the region where you created the IAM user. You can find the region in the `Security credentials` tab of the IAM user. The `AWS_SES_FROM_EMAIL` is the email address from which the transactional emails for the app will be sent.
+
+5. **[ONLY PRODUCTION]** - Now go to the `S3` service and create a new bucket. Update the `.env` file with the following environment variables:
+
+```bash
+# Amazon Simple Storage Service (S3) Configuration
+REPLICA_ACCESS_KEY_ID= # SAME AS AWS_SES_ACCESS_KEY_ID (Step 4)
+REPLICA_SECRET_ACCESS_KEY= # SAME AS AWS_SES_SECRET_ACCESS_KEY (Step 4)
+REPLICA_REGION= # SAME AS AWS_SES_REGION (Step 4)
+REPLICA_BUCKET_NAME=
+```
+
+> The `AWS_S3_BUCKET_NAME` is the name of the bucket you created in the S3 service. This is where all of the database backups will be stored.
+
+Now you are good to go! You can start the local development server by following the steps from the [Contributing](/docs/contributing) guide. If you have any questions or need help, feel free to reach out to me on [X](https://x.com/imarikchakma).

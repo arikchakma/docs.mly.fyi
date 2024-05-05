@@ -1,9 +1,9 @@
 ---
-title: 'Start Sending Emails'
-sort: 3
+title: 'Sending Emails'
+sort: 4
 ---
 
-Before you start sending emails, you need to finish [Local Development](/guides/local-development) or [Production Deployment](/guides/deployment) first, a verified identity, and a API key created from the **_local/production_** environment.
+Before you start sending emails, you need to finish [Local Development](/docs/contributing#local-development) or [Production Deployment](/guides/deployment) first, a verified identity, and a API key created from the **_local/production_** environment.
 
 ```bash
 curl -X POST \
@@ -19,7 +19,7 @@ curl -X POST \
   }'
 ```
 
-> There is a catch, for now you can include only `http` URLs in the `html` field. If you include `https` URLs and turn on the `click tracking` feature, you might get a warning from the [browser](https://github.com/arikchakma/mly.fyi/issues/26). I know it's not ideal (and the solution too), but I will add a feature to support `https` URLs soon.
+> There is a catch, for now you can include only `http` URLs in the `html` field. If you include `https` URLs and turn on the `click tracking` feature, you might get a warning from the [browser](https://github.com/arikchakma/mly.fyi/issues/26). I know it's not ideal, but I will add a feature to support `https` URLs soon (I know the solution, but I need to implement it).
 
 Replace `YOUR_API_KEY`, and `http://localhost:3000` with the API key, and the URL of the app you created from the **_local/production_** environment. You can use any language to send an HTTP request to the API endpoint.
 
@@ -44,3 +44,5 @@ const response = await fetch('http://localhost:3000/api/v1/email/send', {
 const data = await response.json();
 console.log(data);
 ```
+
+You can check the email status from the `Emails` page in the app. You can see the status of the email, and the delivery status of the email. If the email is delivered, you can see the delivery status as `delivered`.

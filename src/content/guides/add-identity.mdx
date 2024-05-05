@@ -1,0 +1,27 @@
+---
+title: 'Add Identity'
+sort: 3
+---
+
+Before you start adding identities into your project, you have to complete the configuration for the project.
+
+From the [AWS Configurations](/docs/aws-configurations) guide, you can follow the steps expect number 5. You don't need to create an S3 bucket for the identity feature. You can skip that step, and remove the `AmazonS3FullAccess` permission from the new IAM user.
+
+Rest of the steps are the same. Once you have the AWS credentials, add them to the project from the project `settings` page, and save the settings. Now you are ready to add identities to the project.
+
+### Adding an Identity
+
+To add an identity, you can use the `Add Identity` button from the `Identities` page. Then you can fill the form with the following fields:
+
+- **Domain** - The domain name of the identity. Remember it has to be a APEX domain (e.g. `example.com`).
+- **Mail from Domain** - The domain name from which the emails will be sent. It has to be a subdomain of the domain (e.g. `mail.example.com`). You can learn more about it from the [Amazon SES documentation](https://docs.aws.amazon.com/ses/latest/dg/mail-from.html).
+
+Once you fill the form, you can click the `Add Identity` button to add the identity. The identity will be added to the identities list, and know you will get a list of DNS records that you have to add to the domain DNS settings.
+
+After adding the DNS records, you can verify the identity. Once the identity is verified, you can start sending emails from that identity.
+
+### API Key
+
+To start sending emails from the identity, you have to create an API key or you can use the existing API key if you have one. You can create an API key from the `Key` page. Once you have the API key, you can use it to send emails from the identity.
+
+> **Note:** Keep the API key secret. Don't share it with anyone. If you think the API key is compromised, you can delete the API key from the `Key` page and create a new one.
