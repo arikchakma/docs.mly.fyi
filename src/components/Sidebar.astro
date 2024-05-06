@@ -1,4 +1,5 @@
 ---
+import { Star } from 'lucide-react';
 import type { GuideType } from '../layouts/DocsLayout.astro';
 
 export interface Props {
@@ -11,7 +12,6 @@ const { activePath, guides, activeGuideSlug } = Astro.props;
 ---
 
 <div
-  id='docs-sidebar'
   class='hidden min-h-screen w-[200px] flex-shrink-0 border-r border-gray-200 text-right md:block lg:w-[350px]'
 >
   <div class='relative top-0 sh:sticky'>
@@ -43,5 +43,13 @@ const { activePath, guides, activeGuideSlug } = Astro.props;
         })
       }
     </ul>
+
+    <a
+      class='mt-5 inline-flex items-center gap-1.5 rounded-l-xl bg-black px-5 py-2 text-white hover:opacity-85'
+      href='https://github.com/arikchakma/mly.fyi'
+    >
+      <Star size='16' />
+      Star on GitHub</a
+    >
   </div>
 </div>
