@@ -3,7 +3,16 @@ title: 'Introduction'
 sort: 1
 ---
 
-**Mly.fyi** helps you track your email deliveries, opens, clicks, and bounces. It's a self-hosted alternative to services like Mailgun, Sendgrid, and Postmark using the Amazon Simple Email Service (SES) for sending emails. Here is a working demo of the app: [demo.mly.fyi](https://go.mly.fyi/mly-demo).
+import { Image } from 'astro:assets';
+import tagline from '../../assets/tagline.png';
+
+**Mly.fyi** helps you track your email deliveries, opens, clicks, and bounces. It's a self-hosted alternative to services like Mailgun, Sendgrid, and Postmark using the Amazon Simple Email Service (SES) for sending emails.
+
+<Image
+  src={tagline}
+  class="hidden rounded-xl md:block"
+  alt="Monitor your Emails, your way."
+/>
 
 ### Features
 
@@ -16,17 +25,17 @@ Here are some of the features:
 - Self-hosted and open-source.
 - More features coming soon!
 
-To get started, you can follow the [deployment guide](/docs/deployment) to deploy on your server.
+To get started, you can follow the [Self-Hosting](/docs/self-hosting) guide to deploy on your server.
 
 ### Tech Stack
 
-Initially, I started exploring the [Tiny Stack](https://go.mly.fyi/tiny-stack) then I really liked the idea of using the smallest possible stack to build a web application. So, I decided to use the following technologies:
+Mly.fyi is built with the simplest stack and is easily extendable. Here are the technologies used:
 
 - [Astro](https://astro.build/) - The main framework for building the full-stack app. It's so fun to work with Astro. You can just use any library you want without any restrictions.
-- [Drizzle ORM](https://orm.drizzle.team/) - A simple, fast, and lightweight ORM. I never used it before, then I thought why not give it a try. I really like it.
-- [SQLite](https://www.sqlite.org/index.html) - A simple and lightweight database for storing the data, and the best part is that I don't have to worry about setting up a database server _(Maybe you can think about adding other databases like PostgreSQL, MySQL, etc.)_. I'm using SQLite for now.
-- [Redis](https://redis.io/) - Mainly for caching the data.
-- [Tailwind CSS](https://tailwindcss.com/) - I didn't consider using any other CSS framework(for now) because I really like Tailwind CSS.
+- [Drizzle ORM](https://orm.drizzle.team/) - A simple, fast, and lightweight ORM.
+- [SQLite](https://www.sqlite.org/index.html) - A simple, lightweight and fit-for-purpose database for storing the data. _(Feel free to add support for databases like PostgreSQL, MySQL, etc.)_.
+- [Redis](https://redis.io/) - For caching and rate limiting.
+- [Tailwind CSS](https://tailwindcss.com/) - Used for styling the app.
 - [Litestream](https://litestream.io/) - For backing up the SQLite database to an S3 bucket.
 - [PNPM](https://pnpm.io/) - A fast, disk space-efficient package manager.
 - [Docker](https://www.docker.com/) - For containerizing the app.

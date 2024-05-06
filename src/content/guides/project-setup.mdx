@@ -1,0 +1,33 @@
+---
+title: 'Project Setup'
+sort: 5
+---
+
+import { Image } from 'astro:assets';
+import identities from '../../assets/identities.png';
+import newProject from '../../assets/new-project.png';
+import projectSettings from '../../assets/project-settings.png';
+
+Once you have Mly.fyi up and running, the next step is to sign up and create a project.
+
+<Image src={newProject} class="rounded-xl" alt="New project form" />
+
+You will then need to go to the project settings page to add the AWS SES credentials. For how to get the AWS SES credentials, you can follow the [configuration guide](/docs/configuration).
+
+<Image src={projectSettings} class="rounded-xl" alt="Project settings" />
+
+Next, you can add identities to the project. An identity is a domain from which you will send emails. You can add multiple identities to a project, and you can send emails from any of the identities.
+
+<Image src={identities} class="rounded-xl" alt="List of identities" />
+
+> **What is an identity?**
+> An identity is a domain from which you will send emails. You can add multiple identities to a project, and you can send emails from any of the identities.
+
+To add an identity, you can use the `Add Identity` button from the `Identities` page. Then you can fill the form with the following fields:
+
+- **Domain** - The domain name of the identity. Remember it has to be a APEX domain (e.g. `example.com`).
+- **Mail from Domain** - The domain name from which the emails will be sent. It has to be a subdomain of the domain (e.g. `mail.example.com`). You can learn more about it from the [Amazon SES documentation](https://docs.aws.amazon.com/ses/latest/dg/mail-from.html).
+
+Once you fill the form, you can click the `Add Identity` button to add the identity. The identity will be added to the identities list, and know you will get a list of DNS records that you have to add to the domain DNS settings.
+
+After adding the DNS records, you can verify the identity. Once the identity is verified, you can start sending emails from that identity.
