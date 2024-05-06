@@ -1,5 +1,5 @@
 ---
-import { Star } from 'lucide-react';
+import { ArrowUpRight, Star } from 'lucide-react';
 import type { GuideType } from '../layouts/DocsLayout.astro';
 
 export interface Props {
@@ -44,12 +44,23 @@ const { activePath, guides, activeGuideSlug } = Astro.props;
       }
     </ul>
 
-    <a
-      class='mt-5 inline-flex items-center gap-1.5 rounded-l-xl bg-black px-5 py-2 text-white hover:opacity-85'
-      href='https://github.com/arikchakma/mly.fyi'
-    >
-      <Star size='16' />
-      Star on GitHub</a
-    >
+    <div class='mt-5 inline-flex flex-col items-end'>
+      <a
+        class='inline-flex items-center gap-1.5 rounded-l-xl bg-orange-500 px-5 py-2 font-medium text-white hover:opacity-85'
+        href='https://go.mly.fyi/mly-demo'
+        target='_blank'
+      >
+        <ArrowUpRight size='16' className='stroke-[2.5px]' />
+        Live Demo
+      </a>
+      <a
+        class='mt-2 inline-flex items-center gap-1.5 rounded-l-xl bg-black px-5 py-2 font-medium text-white hover:opacity-85'
+        href='https://github.com/arikchakma/mly.fyi'
+        target='_blank'
+      >
+        <Star size='16' className='stroke-[2.5px]' />
+        Star on GitHub</a
+      >
+    </div>
   </div>
 </div>

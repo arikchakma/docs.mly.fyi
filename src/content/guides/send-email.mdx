@@ -3,13 +3,17 @@ title: 'Sending Emails'
 sort: 6
 ---
 
+import { Image } from 'astro:assets';
+import emailDetails from '../../assets/email-details.png';
+import apiKeys from '../../assets/api-keys.png';
+
 Before you start sending emails, you must have followed the [project setup](/docs/project-setup) and have a verified identity that you will use to send emails. If you haven't done that yet, please follow the [project setup](/docs/project-setup) guide.
 
 ## API Key
 
 To start sending emails from the identity, you have to create an API key. You can create an API key from the `Key` page. Once you have the API key, you can use it to send emails from the identity.
 
-[//]: # (TODO: Add a screenshot of the Key page)
+<Image src={apiKeys} class="rounded-xl" alt="API Keys" />
 
 > **Note:** Keep the API key secret. Don't share it with anyone. If you think the API key is compromised, you can delete the API key from the `Key` page and create a new one.
 
@@ -59,6 +63,6 @@ console.log(data);
 
 You can check the email status from the `Emails` page in the app.
 
-[//]: # (TODO: Add a screenshot of the Emails page)
+<Image src={emailDetails} class="rounded-xl" alt="Email details" />
 
 You can see the status of the email, and the delivery status of the email. If the email is delivered, you can see the delivery status as `delivered`.

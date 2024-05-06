@@ -3,17 +3,22 @@ title: 'Project Setup'
 sort: 5
 ---
 
-Once you have Maily up and running, the next step is to sign up and create a project.
+import { Image } from 'astro:assets';
+import identities from '../../assets/identities.png';
+import newProject from '../../assets/new-project.png';
+import projectSettings from '../../assets/project-settings.png';
 
-[//]: # (TODO: Add signup screenshot)
+Once you have Mly.fyi up and running, the next step is to sign up and create a project.
+
+<Image src={newProject} class="rounded-xl" alt="New project form" />
 
 You will then need to go to the project settings page to add the AWS SES credentials. For how to get the AWS SES credentials, you can follow the [configuration guide](/docs/configuration).
 
-[//]: # (TODO: Add project settings screenshot)
+<Image src={projectSettings} class="rounded-xl" alt="Project settings" />
 
 Next, you can add identities to the project. An identity is a domain from which you will send emails. You can add multiple identities to a project, and you can send emails from any of the identities.
 
-[//]: # (TODO: Add identities screenshot)
+<Image src={identities} class="rounded-xl" alt="List of identities" />
 
 > **What is an identity?**
 > An identity is a domain from which you will send emails. You can add multiple identities to a project, and you can send emails from any of the identities.
