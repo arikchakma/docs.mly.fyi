@@ -1,0 +1,32 @@
+---
+title: 'Self-Hosting'
+sort: 2
+---
+
+Maily comes with a docker-compose file to help you easily host it yourself. You can deploy it to a VPS, cloud provider, or even your local machine. The app is designed to be deployed anywhere with minimal configuration.
+
+Here are some of the guides to help you deploy the app:
+
+- [Railway](/docs/deploy-railway)
+- DigitalOcean (Coming Soon)
+- AWS (Coming Soon)
+- Google Cloud (Coming Soon)
+
+Note: even though we don't have a guide for your preferred cloud provider, you can still deploy the app anywhere that supports Docker / Docker Compose.
+
+## Running on Local
+
+If you want to run the app to your local machine, you can follow the steps below:
+
+```bash
+cp .env .env.production
+docker-compose up --build -d
+```
+
+> You have to update following environment variables in the `.env.production` file:
+
+```bash
+PUBLIC_APP_URL=http://localhost:4321
+# Database Configuration
+DATABASE_URL=/data/db.sqlite3
+```

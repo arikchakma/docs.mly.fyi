@@ -1,13 +1,25 @@
 ---
 title: 'Sending Emails'
-sort: 4
+sort: 6
 ---
 
-Before you start sending emails, you need to finish [Local Development](/docs/contributing#local-development) or [Production Deployment](/guides/deployment) first, a verified identity, and a API key created from the **_local/production_** environment.
+Before you start sending emails, you must have followed the [project setup](/docs/project-setup) and have a verified identity that you will use to send emails. If you haven't done that yet, please follow the [project setup](/docs/project-setup) guide.
+
+## API Key
+
+To start sending emails from the identity, you have to create an API key. You can create an API key from the `Key` page. Once you have the API key, you can use it to send emails from the identity.
+
+[//]: # (TODO: Add a screenshot of the Key page)
+
+> **Note:** Keep the API key secret. Don't share it with anyone. If you think the API key is compromised, you can delete the API key from the `Key` page and create a new one.
+
+## Sending Emails
+
+To send an email, you have to send an HTTP request to the API endpoint. You can send an email using the `POST` method to the `/api/v1/email/send` endpoint. You have to include the following fields in the request body:
 
 ```bash
 curl -X POST \
-  http://localhost:3000/api/v1/email/send \
+  http://your-project-url/api/v1/email/send \
   -H 'Content-Type: application/json' \
   -H 'X-Mly-Api-Key: YOUR_API_KEY' \
   -d '{
@@ -19,9 +31,7 @@ curl -X POST \
   }'
 ```
 
-> There is a catch, for now you can include only `http` URLs in the `html` field. If you include `https` URLs and turn on the `click tracking` feature, you might get a warning from the [browser](https://github.com/arikchakma/mly.fyi/issues/26). I know it's not ideal, but I will add a feature to support `https` URLs soon (I know the solution, but I need to implement it).
-
-Replace `YOUR_API_KEY`, and `http://localhost:3000` with the API key, and the URL of the app you created from the **_local/production_** environment. You can use any language to send an HTTP request to the API endpoint.
+Replace `YOUR_API_KEY`, and `http://your-project-url` with the API key, and the URL of your app. You can use any language to send an HTTP request to the API endpoint.
 
 Here is an example using `Node.js`:
 
@@ -45,4 +55,10 @@ const data = await response.json();
 console.log(data);
 ```
 
-You can check the email status from the `Emails` page in the app. You can see the status of the email, and the delivery status of the email. If the email is delivered, you can see the delivery status as `delivered`.
+## Once the email is sent
+
+You can check the email status from the `Emails` page in the app.
+
+[//]: # (TODO: Add a screenshot of the Emails page)
+
+You can see the status of the email, and the delivery status of the email. If the email is delivered, you can see the delivery status as `delivered`.
